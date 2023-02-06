@@ -1,0 +1,4 @@
+Damage: ?
+Speed: ?
+DPS: ?
+Description: ?

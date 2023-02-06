@@ -1,0 +1,4 @@
+Damage: 20
+Speed: 0.25/sec
+DPS: 5
+Description: A Massive Warhammer that does high damage in a cone extending out from the player.

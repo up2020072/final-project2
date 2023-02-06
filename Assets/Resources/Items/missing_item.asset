@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9bb2a27d4cee647a4e8471c8c3cd41, type: 3}
+  m_Name: missing_item
+  m_EditorClassIdentifier: 
+  ID: missing_item
+  StackSize: 999
+  ItemName: missing_item
+  Description: item not found
+  Sprite: {fileID: 21300000, guid: c97ccba5b82407541a845840f4a7bf62, type: 3}
+  rarity: 0

@@ -1,0 +1,6 @@
+Damage: 20
+Speed: Instant
+DPS: 8
+Mana Cost: 0.25
+Description: Summons a lightning orb which follows the mouse around. It increases in power the longer the spell is used,
+if the orb is powerfull enough it can remain after killing an enemy but with reduced power.

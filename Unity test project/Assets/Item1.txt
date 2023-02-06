@@ -1,0 +1,4 @@
+Damage: 2
+Speed: 1.5/sec
+DPS: 3
+Description: A Longsword capable of doing low damage at a moderate range

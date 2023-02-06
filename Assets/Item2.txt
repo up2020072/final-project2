@@ -1,0 +1,4 @@
+Damage: 8
+Speed: 0.5/sec
+DPS: 4
+Description: A larger more unweildy sword capable of doing high damage in a small range

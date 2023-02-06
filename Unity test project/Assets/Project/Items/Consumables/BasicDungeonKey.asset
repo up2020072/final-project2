@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea576bdce412baf49a2eb34e47b847ed, type: 3}
+  m_Name: BasicDungeonKey
+  m_EditorClassIdentifier: 
+  ItemName: Basic Dungeon Key
+  Damage: 
+  Description: a consumable item able to open a door in the dungeon
+  speed: 0
+  ItemID: 5
+  StackSize: 1
+  Rarity: 1
+  SellPrice: 50
+  type: 2
+  Sprite: {fileID: 21300000, guid: 4d3c1c0d7cf6ed04aba31de594b495e7, type: 3}

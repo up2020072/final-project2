@@ -1,0 +1,5 @@
+Damage: 2
+Speed: 2/sec
+DPS: 12
+Description: A large crossbow which fires 3 arrows simultaneusly. 
+consumes 3 arrows per shot and has low accuracy, but does high damage

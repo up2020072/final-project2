@@ -1,0 +1,6 @@
+Damage: 2
+Speed: 10/sec
+DPS: 20
+Mana Cost: 2
+Description: A spell book which shoots a fireball in a straight line damaging all enemies it passes through. 
+deals increased damage to armoured enemies
