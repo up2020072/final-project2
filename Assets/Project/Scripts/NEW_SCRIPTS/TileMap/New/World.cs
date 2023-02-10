@@ -29,6 +29,11 @@ public class World : MonoBehaviour
     public GameObject tree;
     public GameObject tileprefab;
 
+    public void SetLevel(int level) 
+    { 
+        //sets level but currently there is no terrain gen for other levels
+        CurrentLevel = level;
+    }
     public void RenderDistance(string dist)
     {
         renderDistance = int.Parse(dist);
@@ -72,6 +77,9 @@ public class World : MonoBehaviour
                 loadedChunks.Add(new Vector2Int(cx, cy));
                 CreateNewChunk(CurrentLevel, cx, cy);
                 ChunkUnloader();
+
+                //currently loads all new chunks in one function call which causes lag at render distances
+                //rework to load one by one
             }
         }
     }

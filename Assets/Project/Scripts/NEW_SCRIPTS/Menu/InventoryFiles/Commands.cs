@@ -97,12 +97,15 @@ public class Commands : MonoBehaviour
     }
     private void ChunkGen(int cx, int cy)
     {
+        //obselete testing code, should remove
         GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<TileMap>().CreateChunk(cx, cy);
     }
     private void LoadLevel (int level)
     {
-        GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().CurrentLevel = level;
-        GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<Map>().currentLevel = level;
-        GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().UnloadLevel();
+        Debug.Log("changed level from " + GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().CurrentLevel + " to " + level);
+        GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().SetLevel(level);
+        //GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().CurrentLevel = level;
+        //GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<Map>().currentLevel = level;
+        //GameData.Data.gaemeObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().UnloadLevel();
     }
 }
