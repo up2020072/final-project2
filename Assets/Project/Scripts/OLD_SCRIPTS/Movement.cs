@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
@@ -22,7 +20,6 @@ public class Movement : MonoBehaviour
         rb2D.MovePosition(rb2D.position + movement * 2.5f * Time.deltaTime);
     }
 
- 
+
 }
 
-   

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 [CreateAssetMenu(menuName = "Item/Weapon/AOE")]
 
 public class AOE : Melee
@@ -11,7 +9,7 @@ public class AOE : Melee
         foreach (Collider2D entity in HitEntities)
         {
             float distance = (entity.transform.position - origin.transform.position).magnitude;
-            float falloff = 1/distance;
+            float falloff = 1 / distance;
             entity.GetComponent<HealthBar>().TakeDamage(damage * falloff, (int)damagetype, (int)knockback);
         }
     }

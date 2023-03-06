@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item/Default")]
 public class Items : ScriptableObject
@@ -27,16 +25,16 @@ public class Items : ScriptableObject
         this.Description = description;
         this.StackSize = stacksize;
     }
-    public static Items CreateInstance(string ID,string Name,string Description,int Stacksize)
+    public static Items CreateInstance(string ID, string Name, string Description, int Stacksize)
     {
         var iteminstance = ScriptableObject.CreateInstance<Items>();
-        iteminstance.Init(ID,Name,Description,Stacksize);
+        iteminstance.Init(ID, Name, Description, Stacksize);
         return iteminstance;
     }
     public virtual void UseItem(GameObject origin, LayerMask targets) { }
 }
 
-public class Interactable : Items 
+public class Interactable : Items
 {
     public string AnimationKey;
     public Interactable()

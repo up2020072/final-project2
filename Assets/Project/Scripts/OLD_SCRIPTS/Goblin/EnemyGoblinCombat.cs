@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyGoblinCombat : MonoBehaviour
 {
@@ -31,16 +29,16 @@ public class EnemyGoblinCombat : MonoBehaviour
     {
         if (GetComponent<EnemyGoblinCombat>().enabled == true)
         {
-            if (OutOfRange < SearchRange* Mathf.Pow(transform.localScale.x,2))
+            if (OutOfRange < SearchRange * Mathf.Pow(transform.localScale.x, 2))
             {
                 GoblinDamage = Mathf.RoundToInt(1 * Mathf.Pow(transform.localScale.x, 2));
-                GameData.Data.player.GetComponent<PlayerHealth>().DamagePlayer(GoblinDamage,0.3f);
+                GameData.Data.player.GetComponent<PlayerHealth>().DamagePlayer(GoblinDamage, 0.3f);
             }
             else
                 return;
         }
-        
-            
+
+
         else
             return;
 
@@ -50,7 +48,7 @@ public class EnemyGoblinCombat : MonoBehaviour
         if (SearchPoint == null)
             return;
         Gizmos.DrawWireSphere(SearchPoint.position, SearchRange);
-       
+
     }
 
 }

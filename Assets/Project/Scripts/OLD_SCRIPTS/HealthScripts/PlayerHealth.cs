@@ -30,13 +30,13 @@ public class PlayerHealth : MonoBehaviour
         HealthList = new List<int>();
         NewHealthPos = InitialHealthPos.position;
         HealthSpacing = 1 / ((float)MaxHealth / HealthConstant);
-        for (int i = 0; i < MaxHealth/ HealthConstant; i++)
-        { 
+        for (int i = 0; i < MaxHealth / HealthConstant; i++)
+        {
             HealthList.Add(HealthConstant);
-            GameObject Healthblock = Instantiate(HealthBlockPrefab,NewHealthPos,Quaternion.identity, Player);
+            GameObject Healthblock = Instantiate(HealthBlockPrefab, NewHealthPos, Quaternion.identity, Player);
             GameObject HealthBlockBackground = Instantiate(HealthBackgroundPrefab, NewHealthPos, Quaternion.identity, Player);
             Healthblock.name = "HealthBlock" + i;
-            NewHealthPos.x += HealthSpacing/1.5f;
+            NewHealthPos.x += HealthSpacing / 1.5f;
         }
         InvokeRepeating("HealPlayer", 1, 1);
     }
@@ -52,19 +52,19 @@ public class PlayerHealth : MonoBehaviour
     {
         damage = Damage;
         Invoke("TakeDamage", Time);
-       
+
     }
     void TakeDamage()
     {
-       CurrentHealth = (int)HealthList[HealthList.Count-1];
-       if (CurrentHealth - damage >= 0)
-       {
+        CurrentHealth = (int)HealthList[HealthList.Count - 1];
+        if (CurrentHealth - damage >= 0)
+        {
             CurrentHealth -= damage;
             HealthList.RemoveAt(HealthList.Count - 1);
             HealthList.Add(CurrentHealth);
-       }
-       else
-            if (CurrentHealth - damage < 0)
+        }
+        else
+             if (CurrentHealth - damage < 0)
         {
             int RemainingDamage = damage - CurrentHealth;
             CurrentHealth -= CurrentHealth;
@@ -74,10 +74,10 @@ public class PlayerHealth : MonoBehaviour
             DamagePlayer(RemainingDamage, 0);
         }
 
-       if (CurrentHealthTotal<=0)
-       {
-           Die();
-       }
+        if (CurrentHealthTotal <= 0)
+        {
+            Die();
+        }
 
 
     }
@@ -85,8 +85,8 @@ public class PlayerHealth : MonoBehaviour
     {
         CurrentHealth = (int)HealthList[HealthList.Count - 1];
         int Heal = 2;
-        if (CurrentHealthTotal<MaxHealth)
-        { 
+        if (CurrentHealthTotal < MaxHealth)
+        {
             if (CurrentHealth + Heal <= HealthConstant)
             {
                 HealthList.RemoveAt(HealthList.Count - 1);

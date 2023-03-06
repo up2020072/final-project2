@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
@@ -35,14 +33,14 @@ public class CameraControl : MonoBehaviour
     {
         Timer += Time.deltaTime;
         ScreenPosPixels = GetComponent<Camera>().WorldToScreenPoint(player.position);
-        ScreenPosRounded = new Vector3(Mathf.RoundToInt(ScreenPosPixels.x), Mathf.RoundToInt(ScreenPosPixels.y),Mathf.RoundToInt(ScreenPosPixels.z));
+        ScreenPosRounded = new Vector3(Mathf.RoundToInt(ScreenPosPixels.x), Mathf.RoundToInt(ScreenPosPixels.y), Mathf.RoundToInt(ScreenPosPixels.z));
         PixelToPos = GetComponent<Camera>().ScreenToWorldPoint(ScreenPosRounded);
-        NewPos = Vector3.Lerp(transform.position,(player.position+DistanceFromScreen),Smooth);
+        NewPos = Vector3.Lerp(transform.position, (player.position + DistanceFromScreen), Smooth);
         SelectedItem = GameData.Data.UIManager.GetComponent<InventoryManager>().InventorySlots[GameData.Data.SelectedSlotNum].item;
         transform.position = new Vector3((NewPos.x), (NewPos.y), -10);
     }
     void Shake()
     {
-        transform.localPosition = transform.position + Random.insideUnitSphere * ShakeConstant * 3/(0.2f+(int)((SelectedItem as Melee).speed)) /(1+Timer);
+        transform.localPosition = transform.position + Random.insideUnitSphere * ShakeConstant * 3 / (0.2f + (int)((SelectedItem as Melee).speed)) / (1 + Timer);
     }
 }

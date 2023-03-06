@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28de2f2af5a1e444f86cb6ad55d34c56, type: 3}
-  m_Name: Stone
+  m_Name: stone
   m_EditorClassIdentifier: 
   ID: stone
-  tilesprite: {fileID: 21300000, guid: a4a6e1d7028e4574a8b7d961a67bd6b0, type: 3}
-  mapColour: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+  tileSprite: stone
+  tileState: 0
+  mapColour: 
   HasCollision: 0

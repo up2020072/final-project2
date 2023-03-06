@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -14,7 +13,7 @@ public class Chest : MonoBehaviour
     public GameObject Arrow;
     public Vector2 Distance;
     private bool ChestOpened;
-    [Range(1,10)]
+    [Range(1, 10)]
     public int LootRarity;
     private GameObject LootDrop;
 
@@ -40,11 +39,11 @@ public class Chest : MonoBehaviour
     }
     void OpenChest()
     {
-        for (int i = 0; i < Random.Range(3*LootRarity,5*LootRarity); i++)
+        for (int i = 0; i < Random.Range(3 * LootRarity, 5 * LootRarity); i++)
         {
             List<GameObject> PotentialDrops = new List<GameObject>()
             {BronzeCoin, SilverCoin, GoldCoin, Arrow};
-            LootDrop = PotentialDrops[Random.Range(0,4)] as GameObject;
+            LootDrop = PotentialDrops[Random.Range(0, 4)] as GameObject;
             Vector3 position = new Vector2(chest.position.x + Random.Range(-0.4f, 0.4f), chest.position.y + Random.Range(-0.4f, 0.4f));
             GameObject lootdrop = Instantiate(LootDrop, position, Quaternion.identity);
         }

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameMenu : MonoBehaviour {
+public class GameMenu : MonoBehaviour
+{
 
     public GameObject Menu;
     public GameObject PauseMenu;
@@ -19,7 +17,7 @@ public class GameMenu : MonoBehaviour {
     public float NewTime;
 
     private bool MapOpen = false;
-    void Start ()
+    void Start()
     {
         Menu.SetActive(true);
     }
@@ -127,7 +125,7 @@ public class GameMenu : MonoBehaviour {
     public void RestartGame()
     {
         SceneManager.LoadSceneAsync(1);
-        SceneManager.LoadSceneAsync(0,LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
     }
     public void ReloadMap()
     {

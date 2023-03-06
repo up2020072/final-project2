@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyGoblin : MonoBehaviour {
+public class EnemyGoblin : MonoBehaviour
+{
     public Animator animator;
     private Rigidbody2D rb2D;
     public float speed = 0.5f;
@@ -12,12 +11,12 @@ public class EnemyGoblin : MonoBehaviour {
     public float OutOfRange;
 
 
-    void Start ()
+    void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate()
     {
         EnemyPosition = transform.position;
         PlayerPosition = GameData.Data.player.transform.position;
@@ -31,14 +30,14 @@ public class EnemyGoblin : MonoBehaviour {
         animator.SetFloat("Horizontal", EnemyDirection.x);
         animator.SetFloat("Vertical", EnemyDirection.y);
         animator.SetFloat("Movement", EnemyDirection.magnitude);
-     
+
     }
 
     void Move()
     {
         if (OutOfRange < 7 && OutOfRange > 0.3 * transform.localScale.x)
         {
-            rb2D.MovePosition(rb2D.position + EnemyDirection * speed/Mathf.Pow(transform.localScale.x,2) * Time.deltaTime);
+            rb2D.MovePosition(rb2D.position + EnemyDirection * speed / Mathf.Pow(transform.localScale.x, 2) * Time.deltaTime);
             animator.SetBool("Attack", false);
             GetComponent<EnemyGoblinCombat>().enabled = false;
         }

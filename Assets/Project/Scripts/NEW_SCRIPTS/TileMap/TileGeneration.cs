@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 ////public class TerrainGeneration_Level0
 //{
 //    public Biome[] level0_biomes;
@@ -37,15 +33,6 @@ using UnityEngine;
 
 //    }
 //}
-
-
-
-
-
-
-
-
-
 
 public static class TerrainGeneration_Level1
 {

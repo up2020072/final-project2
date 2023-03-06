@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: desert_sand
   m_EditorClassIdentifier: 
   ID: desert_sand
-  tilesprite: {fileID: 21300000, guid: f4b2d23eb1cc7d5458dac13c18f035f5, type: 3}
-  mapColour: {r: 0.5849056, g: 0.5198625, b: 0.4717871, a: 1}
+  tileSprite: desert_sand
+  tileState: 0
+  mapColour: 
   HasCollision: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,7 @@ public class Map : MonoBehaviour
     private Texture2D map;
     public int currentLevel;
     public int seed;
-    public Vector2 Pos;
+    public Vector2 Pos = new Vector3();
 
     // Update is called once per frame
     public void Start()
@@ -27,7 +25,8 @@ public class Map : MonoBehaviour
         {
             for (int y = 0; y < MapRes; y++)
             {
-                Color pixelcolour = World.tileMap.GetTile(Pos.x + x-(MapRes/2),Pos.y + y - (MapRes / 2)).mapColour;
+                ColorUtility.TryParseHtmlString(World.tileMap.GetTile(Pos.x + x - (MapRes / 2), Pos.y + y - (MapRes / 2)).mapColour, out Color pixelcolour);
+  
                 map.SetPixel(x, y, pixelcolour);
             }
         }

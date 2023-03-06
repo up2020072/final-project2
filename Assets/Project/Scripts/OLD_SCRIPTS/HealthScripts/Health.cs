@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
     public Animator animator;
     private Rigidbody2D rb2D;
     public float CurrentHealth;
@@ -19,9 +19,9 @@ public class Health : MonoBehaviour {
     [Space]
     [Header("Health Settings")]
     public float MaxHealth;
-    [Range(1,9)]
+    [Range(1, 9)]
     public int HealthType;
-    [Range(1,3)]
+    [Range(1, 3)]
     public int LootRarity;
     public float HealthConstant;
 
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour {
 
     void Start()
     {
-        EnemyRB= GetComponent<Rigidbody2D>();
+        EnemyRB = GetComponent<Rigidbody2D>();
         HealthType -= 1;
         EnemyHealthList = new List<float>();
         List<GameObject> HealthBlockType = new List<GameObject>()
@@ -75,11 +75,11 @@ public class Health : MonoBehaviour {
          ArmourBlock1, ArmourBlock2, ArmourBlock3,
          ShieldBlock1, ShieldBlock2, ShieldBlock3,};
         NewHealthPos = InitialHealthPos.position;
-        HealthBlockPrefab = HealthBlockType[HealthType]as GameObject;
-        NameLength =  HealthBlockPrefab.name.Length;
-        HealthConstantIndex = char.ToString(HealthBlockPrefab.name[NameLength-1]);
+        HealthBlockPrefab = HealthBlockType[HealthType] as GameObject;
+        NameLength = HealthBlockPrefab.name.Length;
+        HealthConstantIndex = char.ToString(HealthBlockPrefab.name[NameLength - 1]);
         HealthConstantPointer = int.Parse(HealthConstantIndex);
-        if (HealthConstantPointer==1)
+        if (HealthConstantPointer == 1)
         {
             HealthConstant = 5;
         }
@@ -91,7 +91,7 @@ public class Health : MonoBehaviour {
         {
             HealthConstant = 15;
         }
-        HealthSpacing = (1 / (HealthConstant))*transform.localScale.x;
+        HealthSpacing = (1 / (HealthConstant)) * transform.localScale.x;
         for (int i = 0; i < HealthConstant; i++)
         {
             EnemyHealthList.Add(MaxHealth / HealthConstant);
@@ -151,8 +151,8 @@ public class Health : MonoBehaviour {
             }
             else
                 damage -= 0;
-            
-            EnemyRB.AddForce(-EnemyDirection.normalized * knockback/3, ForceMode2D.Force);
+
+            EnemyRB.AddForce(-EnemyDirection.normalized * knockback / 3, ForceMode2D.Force);
         }
         //Armor (-3 to all physical damage, and x2 magic)
         if (HealthType >= 3 & HealthType < 6)
@@ -171,7 +171,7 @@ public class Health : MonoBehaviour {
             }
             else
                 damage -= 0;
-            EnemyRB.AddForce(-EnemyDirection.normalized * knockback/10, ForceMode2D.Force);
+            EnemyRB.AddForce(-EnemyDirection.normalized * knockback / 10, ForceMode2D.Force);
             Debug.Log("enemy knocked back");
         }
         //Shield (-5 to magic damage, x2 to physical damage, and x5 to piercing)
@@ -190,8 +190,8 @@ public class Health : MonoBehaviour {
                 damage *= 5;
             }
             else
-                damage -=0;
-        //spectral (immune to physical and piercing, x10 magic damage)
+                damage -= 0;
+            //spectral (immune to physical and piercing, x10 magic damage)
         }
         CurrentHealth = (int)EnemyHealthList[EnemyHealthList.Count - 1];
         Timer = 0;
@@ -251,7 +251,7 @@ public class Health : MonoBehaviour {
 
         }
     }
-    
+
     void Die()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -265,7 +265,7 @@ public class Health : MonoBehaviour {
         //    Vector3 position = new Vector2(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y + Random.Range(-0.1f, 0.1f));
         //    GameObject lootdrop = Instantiate(LootDrop, position, Quaternion.identity);
         //}
-        Destroy(Enemy,1.0f);
+        Destroy(Enemy, 1.0f);
 
 
     }

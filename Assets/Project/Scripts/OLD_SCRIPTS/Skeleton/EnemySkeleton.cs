@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemySkeleton : MonoBehaviour
 {
@@ -59,12 +57,12 @@ public class EnemySkeleton : MonoBehaviour
                 animator.SetBool("Movement", true);
             }
         }
-        if (OutOfRange <2 )
-            {
-                rb2D.MovePosition(rb2D.position + -EnemyDirection * speed * Time.fixedDeltaTime);
-                GetComponent<EnemySkeletonCombat>().enabled = false;
-                animator.SetBool("Movement", true);
-                animator.SetBool("Firing", false);
+        if (OutOfRange < 2)
+        {
+            rb2D.MovePosition(rb2D.position + -EnemyDirection * speed * Time.fixedDeltaTime);
+            GetComponent<EnemySkeletonCombat>().enabled = false;
+            animator.SetBool("Movement", true);
+            animator.SetBool("Firing", false);
         }
         if (OutOfRange > 2)
         {
@@ -75,7 +73,7 @@ public class EnemySkeleton : MonoBehaviour
         }
         if (OutOfRange > 7)
         {
-          animator.SetBool("Movement", false);
+            animator.SetBool("Movement", false);
         }
     }
 
@@ -97,7 +95,7 @@ public class EnemySkeleton : MonoBehaviour
             return;
     }
 
-   
+
     private void OnDrawGizmosSelected()
     {
         if (SearchPoint == null)

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: lava
   m_EditorClassIdentifier: 
   ID: lava
-  tilesprite: {fileID: 21300000, guid: 2527dc958dafa404bb82fcb0c4416eb9, type: 3}
-  mapColour: {r: 0.7735849, g: 0.373928, b: 0.20069422, a: 1}
+  tileSprite: lava
+  tileState: 0
+  mapColour: 
   HasCollision: 0

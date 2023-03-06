@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -18,16 +16,16 @@ public class InventoryManager : MonoBehaviour
     public int InventorySlotAmount;
     //try go through all scripts and make values private if possible
 
-    
+
     public void Awake()
     {
         for (int i = 0; i < InventorySlotAmount; i++)
         {
             //generate slots
             GameObject InventorySlot = Instantiate(InventorySlotPrefab, gameObject.transform.position, Quaternion.identity, InventoryPos);
-            InventorySlot.name = "InventorySlot" + (i+10);
+            InventorySlot.name = "InventorySlot" + (i + 10);
             InventorySlots.Add(InventorySlot.GetComponent<InventorySlot>());
-            InventorySlots[i+10].SlotNumber = i+10;
+            InventorySlots[i + 10].SlotNumber = i + 10;
         }
     }
     public bool PickupItem(Items item, int stackSize)
@@ -36,7 +34,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (InventorySlots[i].item == item && InventorySlots[i].ItemStackSize + stackSize <= item.StackSize)
             {
-                InventorySlots[i].ItemStackSize+=stackSize;
+                InventorySlots[i].ItemStackSize += stackSize;
                 UpdateItemSlot(i);
                 return true;
             }
@@ -100,7 +98,7 @@ public class InventoryManager : MonoBehaviour
     {
         int i = GameData.Data.SelectedSlotNum;
         InventorySlots[i].ItemStackSize -= 1;
-        if(InventorySlots[i].ItemStackSize == 0) InventorySlots[i].item = null;
+        if (InventorySlots[i].ItemStackSize == 0) InventorySlots[i].item = null;
         UpdateItemSlot(i);
         return;
     }

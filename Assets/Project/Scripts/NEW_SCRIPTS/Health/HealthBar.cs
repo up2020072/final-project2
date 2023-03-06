@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,15 +21,15 @@ public class HealthBar : MonoBehaviour
         BarPos = InitialBarPos;
         TotalHealth = totalhealth;
         CurrentHealth = currenthealth;
-        BlockConstant = totalhealth/BlockAmount;
+        BlockConstant = totalhealth / BlockAmount;
         for (int i = 0; i < BlockAmount; i++)
         {
             GameObject healthblockbackground = Instantiate(HealthBlockPrefab, BarPos, Quaternion.identity, entity.transform);
-            healthblockbackground.transform.localScale = new Vector2(1f / BlockAmount,0.75f);
+            healthblockbackground.transform.localScale = new Vector2(1f / BlockAmount, 0.75f);
             healthblockbackground.GetComponent<SpriteRenderer>().color = Color.black;
             healthblockbackground.GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject healthblock = Instantiate(HealthBlockPrefab, BarPos, Quaternion.identity, entity.transform);
-            HealthBlock block = new HealthBlock(BlockConstant, BlockConstant, (int)healthtype , blockamount, healthblock);
+            HealthBlock block = new HealthBlock(BlockConstant, BlockConstant, (int)healthtype, blockamount, healthblock);
             BlockList.Add(block);
             BarPos.x += (1f / BlockAmount) / 1.5f;
         }
@@ -38,7 +37,7 @@ public class HealthBar : MonoBehaviour
     }
     public void TakeDamage(float damage, int damagetype, float knockback, bool modifydamage = true)
     {
-        for (int i = BlockAmount-1; i > -1; i--)
+        for (int i = BlockAmount - 1; i > -1; i--)
         {
             if (BlockList[i].BlockCurrentHealth != 0)
             {
@@ -66,8 +65,8 @@ public class HealthBar : MonoBehaviour
     }
     private float ModifyDamage(float damage, int damagetype, int healthtype)
     {
-        switch (healthtype) 
-        { 
+        switch (healthtype)
+        {
             case 0:
                 if (damagetype == 1) damage += 3;
                 break;
@@ -86,9 +85,9 @@ public class HealthBar : MonoBehaviour
     {
         for (int i = 0; i < BlockAmount; i++)
         {
-            if(BlockList[i].BlockCurrentHealth < BlockList[i].BlockMaxHealth)
+            if (BlockList[i].BlockCurrentHealth < BlockList[i].BlockMaxHealth)
             {
-                if(BlockList[i].BlockCurrentHealth + heal <= BlockList[i].BlockMaxHealth)
+                if (BlockList[i].BlockCurrentHealth + heal <= BlockList[i].BlockMaxHealth)
                 {
                     BlockList[i].BlockCurrentHealth += heal;
                     UpdateHealth();
@@ -121,7 +120,7 @@ public class HealthBar : MonoBehaviour
         {
             GameObject itempickups = Resources.Load<GameObject>("Prefabs/ItemPrefab");
             GameObject itemdrops = Instantiate(itempickups, gameObject.transform.position - new Vector3(0, 0.2f, 0), Quaternion.identity);
-            itemdrops.GetComponent<ItemPickup>().item = GameData.Data.ItemList[Random.Range(0,GameData.Data.ItemList.Count)];
+            itemdrops.GetComponent<ItemPickup>().item = GameData.Data.ItemList[Random.Range(0, GameData.Data.ItemList.Count)];
             gameObject.GetComponent<Animator>().SetTrigger("Dead");
         }
         gameObject.GetComponent<BoxCollider2D>().enabled = false;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
@@ -24,10 +22,10 @@ public class InventorySlot : MonoBehaviour
     }
     public void UpdateItemSlot()
     {
-        if (item !=null)
+        if (item != null)
         {
             sprite.GetComponent<Image>().sprite = item.Sprite;
-            if (ItemStackSize>1)
+            if (ItemStackSize > 1)
             {
                 ItemStack.gameObject.SetActive(true);
                 ItemStack.text = ItemStackSize.ToString();
@@ -63,7 +61,7 @@ public class InventorySlot : MonoBehaviour
             }
             DragSprite.GetComponent<Image>().sprite = item.Sprite;
             Vector2 relativemousepos = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
-            DragSprite.transform.localPosition = relativemousepos * (1920f/Screen.width);
+            DragSprite.transform.localPosition = relativemousepos * (1920f / Screen.width);
             UIManager.GetComponent<InventoryManager>().StartSlotPos = SlotNumber;
             UIManager.GetComponent<InventoryManager>().StartSlotStackSize = ItemStackSize;
         }
@@ -78,7 +76,7 @@ public class InventorySlot : MonoBehaviour
         DragSprite.SetActive(false);
         UIManager.GetComponent<InventoryManager>().EndSlotPos = SlotNumber;
         UIManager.GetComponent<InventoryManager>().EndSlotStackSize = ItemStackSize;
-        UIManager.GetComponent<InventoryManager>().Invoke("SwapItem",0);
+        UIManager.GetComponent<InventoryManager>().Invoke("SwapItem", 0);
         Invoke("EnableToolTipOnSelect", 0);
         UpdateItemSlot();
     }
@@ -88,13 +86,13 @@ public class InventorySlot : MonoBehaviour
         {
             ToolTip.SetActive(true);
             ToolTip.transform.position = transform.position;
-            ToolTip.GetComponent<ToolTip>().Invoke("EnableToolTip",0);
+            ToolTip.GetComponent<ToolTip>().Invoke("EnableToolTip", 0);
             ToolTip.GetComponent<ToolTip>().tooltipitem = item;
         }
         if (item != null && SlotNumber <= 9)
         {
             ToolTip.SetActive(true);
-            ToolTip.transform.position = new Vector3(transform.position.x, transform.position.y+200);
+            ToolTip.transform.position = new Vector3(transform.position.x, transform.position.y + 200);
             ToolTip.GetComponent<ToolTip>().Invoke("EnableToolTip", 0);
             ToolTip.GetComponent<ToolTip>().tooltipitem = item;
         }

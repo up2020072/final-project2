@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,7 +10,7 @@ public class Commands : MonoBehaviour
     public InventoryManager inventory;
     private void Start()
     {
-        
+
         inventory = gameObject.GetComponent<InventoryManager>();
     }
     public dynamic ParseCommand(string String)
@@ -93,14 +91,14 @@ public class Commands : MonoBehaviour
     public void SpawnEntity(string enemy)
     {
         Vector2 spawnpoint = Random.onUnitSphere * 2;
-        GameObject spawnedenemy = Instantiate(ParseCommand(enemy), GameData.Data.player.transform.position + (Vector3)spawnpoint, Quaternion.identity,GameData.Data.EntitySpawn.transform);
+        GameObject spawnedenemy = Instantiate(ParseCommand(enemy), GameData.Data.player.transform.position + (Vector3)spawnpoint, Quaternion.identity, GameData.Data.EntitySpawn.transform);
     }
     private void ChunkGen(int cx, int cy)
     {
         //obselete testing code, should remove
         GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<TileMap>().CreateChunk(cx, cy);
     }
-    private void LoadLevel (int level)
+    private void LoadLevel(int level)
     {
         Debug.Log("changed level from " + GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().CurrentLevel + " to " + level);
         GameData.Data.gameObject.GetComponent<GameMenu>().TileMap.GetComponent<World>().SetLevel(level);

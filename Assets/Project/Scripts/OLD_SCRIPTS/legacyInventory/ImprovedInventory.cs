@@ -47,7 +47,7 @@
 //    public Sprite LightningSpellBookImage;
 
 //    public Image ItemImage;
-    
+
 //    public void Start()
 //    {
 //        if (StartingMeleeWeapon != null)

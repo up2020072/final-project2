@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ghost_old : MonoBehaviour
 {
@@ -33,15 +31,15 @@ public class Ghost_old : MonoBehaviour
         PlayerPosition = Player.transform.position;
         PlayerCurrentHealth = Player.GetComponent<PlayerHealth>().CurrentHealthTotal;
         PlayerMaxHealth = Player.GetComponent<PlayerHealth>().MaxHealth;
-        if (PlayerCurrentHealth/PlayerMaxHealth<0.4)
+        if (PlayerCurrentHealth / PlayerMaxHealth < 0.4)
         {
             Angry = true;
-            animator.SetBool("Angry",true);
+            animator.SetBool("Angry", true);
         }
         else
         {
             Angry = false;
-            animator.SetBool("Angry",false);
+            animator.SetBool("Angry", false);
 
         }
         EnemyDirection = new Vector2(PlayerPosition.x - transform.position.x, PlayerPosition.y - transform.position.y);
@@ -61,7 +59,7 @@ public class Ghost_old : MonoBehaviour
         {
             if (OutOfRange > 1.5)
             {
-                NewSpeed = (speed * OutOfRange)-0.45f;
+                NewSpeed = (speed * OutOfRange) - 0.45f;
                 rb2D.MovePosition(rb2D.position + EnemyDirection * NewSpeed * EnemyDirection.magnitude / Mathf.Pow(transform.localScale.x, 2) * Time.fixedDeltaTime);
             }
         }
@@ -76,14 +74,14 @@ public class Ghost_old : MonoBehaviour
     }
     void Search()
     {
-        if (OutOfRange < 0.4 * transform.localScale.x & Angry==true)
+        if (OutOfRange < 0.4 * transform.localScale.x & Angry == true)
         {
-                //GetComponent<EnemyGhostCombat>().enabled = true;
-                animator.SetBool("Attack", true);
+            //GetComponent<EnemyGhostCombat>().enabled = true;
+            animator.SetBool("Attack", true);
         }
-         else
-                //GetComponent<EnemyGhostCombat>().enabled = false;
-                animator.SetBool("Attack", false);
-     
+        else
+            //GetComponent<EnemyGhostCombat>().enabled = false;
+            animator.SetBool("Attack", false);
+
     }
 }

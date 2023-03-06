@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class Player : Entity
     public override void Controller()
     {
         if (GameData.Data.InventoryOpen == false && GameData.Data.SelectedSlot != null && GameData.Data.SelectedSlot.item is Interactable) MouseInputs();
-        MoveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")/2) * Speed;
+        MoveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") / 2) * Speed;
         Move();
         AnimateWeapon();
     }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,7 +56,7 @@ public class TileMap : MonoBehaviour
         //renderdistance = 1 + (int)Camera.main.orthographicSize / 7;
         Vector2 pos = GameData.Data.player.transform.position / ChunkSize;
         chunkpos = new Vector2((pos.x + pos.y * 2), -(pos.x - pos.y * 2));
-        chunkpos = new Vector2(Mathf.CeilToInt(chunkpos.x)-1, Mathf.CeilToInt(chunkpos.y)-1);
+        chunkpos = new Vector2(Mathf.CeilToInt(chunkpos.x) - 1, Mathf.CeilToInt(chunkpos.y) - 1);
         if (chunkpos.magnitude != tempchunkpos.magnitude | renderdistance != temprenderdistance)
         {
             tempchunkpos = chunkpos;
@@ -116,7 +115,7 @@ public class TileMap : MonoBehaviour
         //might be worth looking at unitys built in tilemap as the render performance is much quicker and its currently the only area where the performance is struggling
         GameObject chunkparent = new GameObject(cx + "_" + cy);
         chunkparent.transform.parent = transform;
-        chunkparents.Add(new Vector2Int(cx,cy),chunkparent);
+        chunkparents.Add(new Vector2Int(cx, cy), chunkparent);
         GameObject[,] chunk = new GameObject[ChunkSize, ChunkSize];
         for (int x = 0; x < ChunkSize; x++)
         {
@@ -128,15 +127,15 @@ public class TileMap : MonoBehaviour
                 Vector2 tilepos = new Vector2((xpos - ypos) * 0.5f, ((xpos + ypos) * 0.25f));
                 newtile = Instantiate(tileprefab, tilepos, Quaternion.identity, chunkparent.transform);
                 chunk[x, y] = newtile;
-                TileScriptableObject tiletype = GetTileType(x, y, GetNoise(xpos, ypos), newtile.transform,chunkparent.transform);
+                TileScriptableObject tiletype = GetTileType(x, y, GetNoise(xpos, ypos), newtile.transform, chunkparent.transform);
 
                 newtile.GetComponent<SpriteRenderer>().sprite = tiletype.tilesprite;
                 newtile.name = tiletype.name + "_tile_chunk_" + cx + "_" + cy;
                 //test implementation to give tile hitboxes - will need fleshing out to allow tiles to have properties
-                if(tiletype.HasCollision)
+                if (tiletype.HasCollision)
                 {
                     newtile.AddComponent<BoxCollider2D>();
-                } 
+                }
                 Color tilecolor = Color.white;
                 tilecolor *= 0.6f + (0.4f * tileheight);
                 tilecolor.a = 100;
@@ -144,8 +143,8 @@ public class TileMap : MonoBehaviour
             }
         }
         Vector2Int chunkpos = new Vector2Int(cx, cy);
-        chunks.Add(chunkpos,chunk);
-        
+        chunks.Add(chunkpos, chunk);
+
     }
     //this whole function isnt very efficient
     private TileScriptableObject GetTileType(float x, float y, float noise, Transform tile, Transform chunk)
@@ -202,7 +201,7 @@ public class TileMap : MonoBehaviour
         {
             for (int y = 0; y < MapRes; y++)
             {
-                map.SetPixel(x, y, GetColor(GetNoise((x * increment) - (mapsize / 2), (y* increment) - (mapsize / 2))));
+                map.SetPixel(x, y, GetColor(GetNoise((x * increment) - (mapsize / 2), (y * increment) - (mapsize / 2))));
             }
         }
         map.Apply();

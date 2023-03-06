@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBar_old : MonoBehaviour
@@ -56,5 +55,5 @@ public class HealthBar_old : MonoBehaviour
             transform.localScale = Scale;
         }
     }
- 
+
 }

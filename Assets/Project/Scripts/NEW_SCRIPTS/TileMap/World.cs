@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class World : MonoBehaviour
 {
+    public List<ChunkData> chunkData = new List<ChunkData>();
+
     public static World tileMap;
     //levels contains all chunks that have ever been created
     //loaded chunks contains the ids of currently loaded chunks
     public Dictionary<Vector2Int, Chunk>[] Levels = new Dictionary<Vector2Int, Chunk>[9];
     private List<Vector2Int> loadedChunks = new List<Vector2Int>();
     public Biome[] level0_biomes;
-
 
     private int chunkSize = 16;
     private float tileheight;
@@ -29,8 +31,8 @@ public class World : MonoBehaviour
     public GameObject tree;
     public GameObject tileprefab;
 
-    public void SetLevel(int level) 
-    { 
+    public void SetLevel(int level)
+    {
         //sets level but currently there is no terrain gen for other levels
         CurrentLevel = level;
     }
@@ -46,7 +48,7 @@ public class World : MonoBehaviour
         gameObject.GetComponent<Map>().seed = seed;
         Debug.Log(seed.ToString());
         InvokeRepeating("LoadWorld", 0, 0.1f);
-        for(int i = 0; i < 9; i++)
+        for (int i = 0; i < 9; i++)
         {
             Levels[i] = new Dictionary<Vector2Int, Chunk>();
         }
@@ -63,7 +65,7 @@ public class World : MonoBehaviour
             ChunkLoader();
         }
     }
-    private void ChunkLoader() 
+    private void ChunkLoader()
     {
         for (int cx = (int)chunkPos.x - renderDistance; cx <= chunkPos.x + renderDistance; cx++)
         {
@@ -80,10 +82,11 @@ public class World : MonoBehaviour
 
                 //currently loads all new chunks in one function call which causes lag at render distances
                 //rework to load one by one
+
             }
         }
     }
-    public void ChunkUnloader() 
+    public void ChunkUnloader()
     {
         List<Vector2Int> unloadQueue = new List<Vector2Int>();
         foreach (Vector2Int pos in loadedChunks)
@@ -118,6 +121,8 @@ public class World : MonoBehaviour
         chunkparent.transform.parent = transform;
         newchunk.Parent = chunkparent;
         Levels[CurrentLevel].Add(pos, newchunk);
+
+        newchunk.ID = cx + "_" + cy;
         for (int x = 0; x < chunkSize; x++)
         {
             for (int y = 0; y < chunkSize; y++)
@@ -131,24 +136,40 @@ public class World : MonoBehaviour
                 //tile gameobject creation
                 newtile = Instantiate(tileprefab, tilepos, Quaternion.identity, chunkparent.transform);
                 Tile tiletype = GetTile(xpos, ypos);
-                newtile.GetComponent<SpriteRenderer>().sprite = tiletype.tilesprite;
+
+                //IMPORTANT
+                newtile.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("TileSprites/" + tiletype.tileSprite);
+
+
                 newtile.name = tiletype.name + "_tile_chunk_" + cx + "_" + cy;
                 //newchunk.Tiles.SetValue(tiletype, x, y);
-                //newchunk.Tiles[x,y].tile = newtile;
+                newchunk.Tiles[x, y] = tiletype;
                 if (tiletype.HasCollision)
                 {
                     newtile.AddComponent<BoxCollider2D>();
                 }
 
-                //height gradient
-                Color tilecolor = Color.white;
-                //tilecolor *= 0.6f + (0.4f * tileheight);
+                ////height gradient
+                //Color tilecolor = Color.white;
+                ////tilecolor *= 0.6f + (0.4f * tileheight);
 
-                //temp colour change to denote level difference
-                tilecolor.a = 100;
-                newtile.GetComponent<SpriteRenderer>().color = tilecolor;
+                ////temp colour change to denote level difference
+                //tilecolor.a = 100;
+                //newtile.GetComponent<SpriteRenderer>().color = tilecolor;
+
+                //json save testing
+                //tileData[x, y] = tiletype;
+
             }
         }
+
+        chunkData.Add(new ChunkData()
+        {
+        id = newchunk.ID,
+        tiles = newchunk.Tiles
+        });
+        string json = JsonConvert.SerializeObject(chunkData[chunkData.Count-1], Formatting.Indented);
+        System.IO.File.WriteAllText(@"D:\" + "level" + level + "\\ " + cx + "_" + cy + ".json", json);
     }
     public void GenerateObject()
     {

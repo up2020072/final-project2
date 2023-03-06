@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_old : MonoBehaviour
@@ -85,13 +84,13 @@ public class Player_old : MonoBehaviour
     }
     private void ItemUsage()
     {
-        if(GameData.Data.ItemCooldown == false && (LeftClick || LeftClickLong))
+        if (GameData.Data.ItemCooldown == false && (LeftClick || LeftClickLong))
         {
 
             bodyanimator.SetBool("Attack", true);
             //Debug.Log((GameData.Data.SelectedSlot.item as Interactable).AnimationKey);
             //Debug.Log(animationClips.FindIndex(x => x == ((GameData.Data.SelectedSlot.item as Interactable).AnimationKey)));
-            bodyanimator.SetFloat("WeaponAnimation",(float)animationClips.FindIndex(x => x == (GameData.Data.SelectedSlot.item as Interactable).AnimationKey));
+            bodyanimator.SetFloat("WeaponAnimation", (float)animationClips.FindIndex(x => x == (GameData.Data.SelectedSlot.item as Interactable).AnimationKey));
         }
     }
 }

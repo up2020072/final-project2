@@ -114,7 +114,7 @@
 //        animator.SetFloat("Horizontal", MovementDirection.x);
 //        animator.SetFloat("Vertical", MovementDirection.y);
 //    }
-    
+
 //    void MeleeAttack()
 //    {
 //        if (Attacking & !Firing)
@@ -247,7 +247,7 @@
 //        if (Firing==false)
 //        {
 //            GameData.Data.RegenerateMana = true;
-        
+
 //        }
 //    }
 

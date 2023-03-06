@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28de2f2af5a1e444f86cb6ad55d34c56, type: 3}
-  m_Name: Sandstone
+  m_Name: sandstone
   m_EditorClassIdentifier: 
-  ID: 
-  tilesprite: {fileID: 21300000, guid: ca61e1d3e64260d489a2035f4fe22718, type: 3}
-  mapColour: {r: 0.5283019, g: 0.44719455, b: 0.4061944, a: 1}
+  ID: sandstone
+  tileSprite: sandstone
+  tileState: 0
+  mapColour: 
   HasCollision: 0

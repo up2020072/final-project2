@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyArrow : MonoBehaviour
 {
     public Transform AttackPoint;
-    private float AttackRange=0.3f;
+    private float AttackRange = 0.3f;
     public LayerMask EnemyLayers;
     public int Damage;
 

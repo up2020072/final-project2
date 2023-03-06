@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData : MonoBehaviour
@@ -34,7 +33,7 @@ public class GameData : MonoBehaviour
     void Awake()
     {
         Data = this; SelectedSlot = UIManager.GetComponent<InventoryManager>().InventorySlots[0];
-        ChangeHotbarSlot(0); 
+        ChangeHotbarSlot(0);
         Object[] AllItems = Resources.LoadAll("Items", typeof(Items));
         foreach (Items item in AllItems)
         {

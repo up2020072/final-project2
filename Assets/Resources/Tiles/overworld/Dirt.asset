@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28de2f2af5a1e444f86cb6ad55d34c56, type: 3}
-  m_Name: Dirt
+  m_Name: dirt
   m_EditorClassIdentifier: 
   ID: dirt
-  tilesprite: {fileID: 21300000, guid: b6be7ecb3b3eb8c4aa38e08522e33dfb, type: 3}
-  mapColour: {r: 0.46226418, g: 0.2756336, b: 0.20714669, a: 1}
+  tileSprite: dirt
+  tileState: 0
+  mapColour: 
   HasCollision: 0
